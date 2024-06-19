@@ -1,5 +1,3 @@
-// const Mailgun = require('mailgun-js');
-// const { Pool } = require('pg');
 import dotenv from 'dotenv'
 import Mailgun from 'mailgun-js';
 import {
