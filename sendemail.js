@@ -158,8 +158,6 @@ async function sendEmail(email) {
 
   try {
     await mg.messages().send(msg);
-    console.log('Email sent to: ' + email);
-    
 
     const client = await pool.connect();
     const res = await mintNFT();
@@ -167,7 +165,9 @@ async function sendEmail(email) {
     console.log(transactionHash);
     console.dir(res, { depth: null, colors: true });
 
-    await client.query('UPDATE public."djooky_user" SET status = $1, transaction_hash = $2 WHERE email = $3', ['sent', transactionHash, email]);
+    await client.query('UPDATE public."djooky_user_test" SET status = $1, transaction_hash = $2 WHERE email = $3', ['sent', transactionHash, email]);
+
+    console.log('Email sent to: ' + email);
 
     client.release();
   } catch (error) {
@@ -233,7 +233,7 @@ async function mintNFT() {
     const client = await pool.connect();
 
   try {
-    const res = await client.query('SELECT email FROM public."djooky_user" WHERE status = $1', ['ready']);
+    const res = await client.query('SELECT email FROM public."djooky_user_test" WHERE status = $1', ['ready']);
     const emails = res.rows;
 
     for (let row of emails) {
