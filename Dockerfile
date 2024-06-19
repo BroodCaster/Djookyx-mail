@@ -1,4 +1,4 @@
-FROM node:18-alpine AS deps
+FROM node:20-alpine AS deps
 
 WORKDIR /app
 
@@ -6,7 +6,7 @@ COPY package.json package-lock.json ./
 
 RUN npm i -force
 
-FROM node:18-alpine AS runner
+FROM node:20-alpine AS runner
 
 WORKDIR /app
 
