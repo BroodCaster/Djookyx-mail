@@ -10,9 +10,10 @@ FROM node:20-alpine AS runner
 
 WORKDIR /app
 
-COPY . .
-
 COPY .env .env
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 
 EXPOSE 8080
 
