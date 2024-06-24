@@ -2,10 +2,10 @@ version: '3.7'
 
 services:
   app:
+    container_name: mail
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: mail
     ports:
       - "8080:8080"
     volumes:
