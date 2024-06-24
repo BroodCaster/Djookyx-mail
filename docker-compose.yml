@@ -13,3 +13,9 @@ services:
     env_file:
       - .env
     command: npm run start
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

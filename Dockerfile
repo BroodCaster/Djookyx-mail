@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN npm i -force
+RUN npm install --force
 
 FROM node:20-alpine AS runner
 
@@ -17,4 +17,4 @@ COPY . .
 
 EXPOSE 8080
 
-RUN npm run start
+CMD ["npm", "run", "start"]
