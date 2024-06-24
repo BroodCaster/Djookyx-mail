@@ -230,7 +230,9 @@ async function mintNFT() {
 }
 
 (async () => {
-    const client = await pool.connect();
+  console.log("Connecting to the database...");
+  const client = await pool.connect();
+  console.log("Succesfuly connected!");
 
   try {
     const res = await client.query('SELECT email FROM public."djooky_user" WHERE status = $1', ['ready']);
